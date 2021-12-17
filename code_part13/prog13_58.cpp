@@ -31,4 +31,6 @@ int main()
     Foo().sorted();
     Foo f;
     f.sorted();
+    
+    return 0;
 }
