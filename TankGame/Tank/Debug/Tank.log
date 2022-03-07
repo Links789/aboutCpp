@@ -1,7 +1,5 @@
-﻿  pch.cpp
-  MainFrm.cpp
+﻿  MainFrm.cpp
+F:\github\aboutCpp\TankGame\Tank\MainFrm.cpp(53,1): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
   Tank.cpp
-  TankDoc.cpp
-  TankView.cpp
+F:\github\aboutCpp\TankGame\Tank\MainFrm.h(1,9): warning C4068: unknown pragma 'onece'
   Generating Code...
-  Tank.vcxproj -> F:\github\aboutCpp\TankGame\Tank\Debug\Tank.exe

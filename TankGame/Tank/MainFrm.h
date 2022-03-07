@@ -1,42 +1,30 @@
+#pragma onece
 
-// MainFrm.h : interface of the CMainFrame class
-//
+class CMainFrame : public CFrameWnd {
 
-#pragma once
+public:
+	CMainFrame();
+protected:
+	DECLARE_DYNAMIC(CMainFrame)
 
-class CMainFrame : public CFrameWnd
-{
-	
-protected: // create from serialization only
-	CMainFrame() noexcept;
-	DECLARE_DYNCREATE(CMainFrame)
-
-// Attributes
+//features
 public:
 
-// Operations
+//operate
 public:
 
-// Overrides
+//overwrite
 public:
-	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
-// Implementation
+//implement
 public:
 	virtual ~CMainFrame();
-#ifdef _DEBUG
-	virtual void AssertValid() const;
-	virtual void Dump(CDumpContext& dc) const;
-#endif
 
-protected:  // control bar embedded members
-	CToolBar          m_wndToolBar;
-
-// Generated message map functions
+//Generate a message map method
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	DECLARE_MESSAGE_MAP()
 
+	int m_iWidth{ 800 };	//width
+	int m_iHeight{ 600 };	//height
 };
-
-

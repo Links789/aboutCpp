@@ -1,9 +1,4 @@
-
-// MainFrm.cpp : implementation of the CMainFrame class
-//
-
-#include "pch.h"
-#include "framework.h"
+#include "stdafx.h"
 #include "Tank.h"
 
 #include "MainFrm.h"
@@ -11,74 +6,47 @@
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
+/**************************/
+#define GAME_WIN_W (800)		//Global: width
+#define GAME_WIN_H (600)		//Global: height
 
-// CMainFrame
+// CmainFrame
 
-IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
+IMPLEMENT_DYNAMIC (CMainFrame, CFrameWnd)	//Automatic generated
 
-BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
-	ON_WM_CREATE()
+BEGIN_MESSAGE_MAP (CMainFrame, CFrameWnd)	//Automatic generated
+		ON_WM_CREATE()
 END_MESSAGE_MAP()
 
-// CMainFrame construction/destruction
+//CMainFrame Constructor/Destructor
 
-CMainFrame::CMainFrame() noexcept
-{
-	// TODO: add member initialization code here
+CMainFrame::CMainFrame() {
+#define MY_STYLE (WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | \
+		WS_MINIMIZEBOX | FWS_ADDTOTITLE)
+	//Create window
+	Create(NULL, _T("Tank Game"), MY_STYLE, CRect(0, 0, GAME_WIN_W, GAME_WIN_H);
+		//Set the customer area
+		{
+			CRect rcCli;
+			GetClientRect(rcCli);	//Get the size of the customer area
+
+			RECT rcFram = { 0,0,	//Calculate the size of the border
+						   m_iWidth + m_iWidth - rcCli.right,
+						   m_iHeight + m_iHeight - rcCli.bottom };
+			MoveWindow(&rcFrame, TRUE);	//Call WindowsAPI setting window location, size
+
+		}
 }
 
-CMainFrame::~CMainFrame()
-{
+//Destructor
+CMainFrame::~CMainFrame() {
+
 }
 
-int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
-{
-	if (CFrameWnd::OnCreate(lpCreateStruct) == -1)
+int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
+	if (CFrameWnd::OnCreate(lpCtreateStruct) == -1) {
 		return -1;
-
-	if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP | CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
-		!m_wndToolBar.LoadToolBar(IDR_MAINFRAME))
-	{
-		TRACE0("Failed to create toolbar\n");
-		return -1;      // fail to create
 	}
-
-	// TODO: Delete these three lines if you don't want the toolbar to be dockable
-	m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
-	EnableDocking(CBRS_ALIGN_ANY);
-	DockControlBar(&m_wndToolBar);
-
 
 	return 0;
 }
-
-BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
-{
-	if( !CFrameWnd::PreCreateWindow(cs) )
-		return FALSE;
-	// TODO: Modify the Window class or styles here by modifying
-	//  the CREATESTRUCT cs
-
-	cs.style = WS_OVERLAPPED | WS_CAPTION | FWS_ADDTOTITLE
-		 | WS_MINIMIZEBOX | WS_SYSMENU;
-
-	return TRUE;
-}
-
-// CMainFrame diagnostics
-
-#ifdef _DEBUG
-void CMainFrame::AssertValid() const
-{
-	CFrameWnd::AssertValid();
-}
-
-void CMainFrame::Dump(CDumpContext& dc) const
-{
-	CFrameWnd::Dump(dc);
-}
-#endif //_DEBUG
-
-
-// CMainFrame message handlers
-
